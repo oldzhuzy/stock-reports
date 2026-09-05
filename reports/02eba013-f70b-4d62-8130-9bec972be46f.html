@@ -5,48 +5,54 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>比亚迪（002594）分析报告</title>
 <style>
-  :root { --bg:#f5f6f8; --card:#ffffff; --line:#e6e9ef; --fg:#1c2333; --dim:#69707f;
-          --accent:#2f6bff; --red:#d7263d; --green:#0e9f6e; }
+  /* ---- 全局设计刻度：字号 12/14/16/18/22 五档，间距 4 的倍数，圆角 8/12/16 三档 ---- */
+  :root {
+    --bg:#f5f6f8; --card:#ffffff; --line:#e6e9ef; --fg:#1c2333; --dim:#69707f;
+    --accent:#2f6bff; --red:#d7263d; --green:#0e9f6e;
+    --fs-xs:12px; --fs-sm:14px; --fs-md:16px; --fs-lg:18px; --fs-xl:22px;
+  }
   * { box-sizing:border-box; }
   html { -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
   body { margin:0; background:var(--bg); color:var(--fg);
-         font:16px/1.85 -apple-system,"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif;
+         font:var(--fs-md)/1.85 -apple-system,"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif;
          word-break:break-word; overflow-wrap:anywhere; }
 
   .wrap { max-width:820px; margin:0 auto; padding:18px 16px 70px; }
 
-  header.page { background:var(--card); border:1px solid var(--line); border-radius:14px;
-         padding:18px 20px; margin-bottom:14px; }
-  header.page h1 { margin:0 0 6px; font-size:20px; line-height:1.4; }
-  header.page .sub { color:var(--dim); font-size:12.5px; }
+  header.page { background:var(--card); border:1px solid var(--line); border-radius:16px;
+         padding:20px 24px; margin-bottom:12px; }
+  header.page h1 { margin:0 0 6px; font-size:var(--fs-xl); line-height:1.4; }
+  header.page .sub { color:var(--dim); font-size:var(--fs-sm); }
 
   nav#toc { position:sticky; top:0; z-index:30; background:rgba(245,246,248,.92);
          backdrop-filter:blur(6px); padding:10px 0 8px; margin:0 -4px 6px;
          display:flex; gap:8px; overflow-x:auto; -webkit-overflow-scrolling:touch; }
   nav#toc a { flex:none; background:var(--card); border:1px solid var(--line); color:var(--fg);
-         text-decoration:none; font-size:13px; padding:6px 14px; border-radius:20px;
+         text-decoration:none; font-size:var(--fs-sm); padding:6px 14px; border-radius:20px;
          white-space:nowrap; }
-  nav#toc a span { color:var(--dim); font-size:11px; margin-right:4px; }
+  nav#toc a span { color:var(--dim); font-size:var(--fs-xs); margin-right:4px; }
+  nav#toc a.sr-chip { border-color:#c9d8f7; background:#f4f7ff; color:var(--accent); font-weight:600; }
   nav#toc a:active, nav#toc a:hover { border-color:var(--accent); color:var(--accent); }
 
-  section.card { background:var(--card); border:1px solid var(--line); border-radius:14px;
-         padding:20px 22px 14px; margin:14px 0; scroll-margin-top:64px; }
-  .card-head { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
-  .card-head .num { flex:none; width:30px; height:30px; border-radius:9px; background:#eef3ff;
-         color:var(--accent); font-weight:700; font-size:13px; display:flex;
+  section.card { background:var(--card); border:1px solid var(--line); border-radius:16px;
+         padding:20px 24px 14px; margin:14px 0; scroll-margin-top:64px; }
+  .card-head { display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+  .card-head .num { flex:none; width:32px; height:32px; border-radius:10px; background:#eef3ff;
+         color:var(--accent); font-weight:700; font-size:var(--fs-sm); display:flex;
          align-items:center; justify-content:center; }
-  .card-head h2 { margin:0; font-size:16.5px; }
+  .card-head h2 { margin:0; font-size:var(--fs-lg); }
 
+  .md { font-size:var(--fs-md); }
   .md h1,.md h2,.md h3 { line-height:1.5; margin:1.5em 0 .6em; }
-  .md h1 { font-size:18px; } .md h2 { font-size:16.5px; } .md h3 { font-size:15px; }
+  .md h1 { font-size:var(--fs-lg); } .md h2 { font-size:var(--fs-lg); } .md h3 { font-size:var(--fs-md); }
   .md p { margin:.75em 0; }
   .md strong { color:#000; }
   .md table { display:block; overflow-x:auto; border-collapse:collapse; width:100%;
-              margin:12px 0; font-size:13.5px; -webkit-overflow-scrolling:touch; }
+              margin:12px 0; font-size:var(--fs-sm); -webkit-overflow-scrolling:touch; }
   .md th,.md td { border:1px solid var(--line); padding:7px 11px; text-align:left; white-space:nowrap; }
   .md th { background:#f2f5fa; }
   .md tr:nth-child(even) td { background:#fafbfd; }
-  .md code { background:#f2f4f8; padding:1px 6px; border-radius:4px; font-size:13px; }
+  .md code { background:#f2f4f8; padding:1px 6px; border-radius:4px; font-size:var(--fs-sm); }
   .md pre { background:#f2f4f8; border:1px solid var(--line); border-radius:8px; padding:12px; overflow-x:auto; }
   .md pre code { background:none; padding:0; }
   .md blockquote { border-left:3px solid var(--accent); margin:12px 0; padding:4px 14px; color:var(--dim); background:#f8faff; }
@@ -55,11 +61,11 @@
   .md img { max-width:100%; }
   .md hr { border:none; border-top:1px solid var(--line); margin:20px 0; }
   a { color:var(--accent); }
-  footer { text-align:center; color:var(--dim); font-size:11px; padding:10px 0 26px; }
+  footer { text-align:center; color:var(--dim); font-size:var(--fs-xs); padding:10px 0 26px; }
 
   @media (max-width:700px) {
     body { font-size:15.5px; }
-    header.page h1 { font-size:18px; }
+    header.page h1 { font-size:var(--fs-lg); }
     section.card { padding:16px 16px 10px; }
   }
 </style>
@@ -70,7 +76,7 @@
   <h1>比亚迪（002594）分析报告</h1>
   <div class="sub">task 02eba013-f70b-4d62-8130-9bec972be46f · 29109 字 · 12 份子报告</div>
 </header>
-<nav id="toc"><a href="#sec-1"><span>01</span>市场分析师</a>
+<style>.sr-hero{background:linear-gradient(135deg,#ffffff,#f4f7ff);border:1px solid #dbe4f5;border-radius:16px;padding:20px 24px 14px;margin:2px 0 12px;scroll-margin-top:64px;}.sr-head{display:flex;align-items:center;gap:12px;margin-bottom:12px;}.sr-head .num{flex:none;width:32px;height:32px;border-radius:10px;background:#eef3ff;color:#2f6bff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;}.sr-head h2{margin:0;font-size:18px;}.sr-badge{font-size:14px;font-weight:700;color:#fff;border-radius:8px;padding:3px 14px;}.sr-badge.sr-buy{background:#d7263d;}.sr-badge.sr-sell{background:#0e9f6e;}.sr-badge.sr-flat{background:#8a93a6;}.sr-row{display:flex;gap:14px;padding:9px 0;border-top:1px dashed #e6eaf2;}.sr-row:first-of-type{border-top:none;}.sr-label{flex:none;width:68px;color:#2f6bff;font-weight:600;font-size:14px;padding-top:2px;}.sr-val{flex:1;font-size:16px;line-height:1.8;white-space:pre-wrap;}.sr-note{color:#69707f;font-size:14px;}@media (max-width:700px){.sr-val{font-size:15.5px;}}</style><section class="sr-hero" id="sec-0"><div class="sr-head"><span class="num">00</span><h2>📋 总结意见</h2><span class="sr-badge sr-sell">看空</span></div><div class="sr-row"><span class="sr-label">结论</span><div class="sr-val">看空（卖出，净敞口归零）。基本面恶化（三季报净利同比约-30%）叠加均线全空头排列，概率加权后1个月目标约86.5、6个月约83，各期限期望收益为零至负，而下行尾部风险达两位数（约-14%）。置信度：高——激进、安全、中性三方罕见合流于离场，无一方主张买入或持有。</div></div><div class="sr-row"><span class="sr-label">多方论点</span><div class="sr-val"></div></div><div class="sr-val sr-note">1. 86.60-86.61双重支撑（布林带下轨与5日最低价重合）未破，股价获初步承接；</div><div class="sr-val sr-note">2. RSI6=33.70接近超卖，抛压阶段性释放，存在技术性反弹需求；</div><div class="sr-val sr-note">3. 回调全程无恐慌性放量杀跌，日均1.68亿股属常态量，主力未出逃，下跌属获利回吐；</div><div class="sr-val sr-note">4. 基本面报告给出合理区间86.6-93.0、中期目标95-100，可于86.6-87.5分批布局、85止损，宣称盈亏比3:1以上。</div><div class="sr-row"><span class="sr-label">空方论点</span><div class="sr-val"></div></div><div class="sr-val sr-note">1. 支撑未被真正考验且与5日低点同源，是“同一数字写两遍”；止损线86.50就在脚下约1%，破位即触发止损盘连锁踩踏；</div><div class="sr-val sr-note">2. 缩量是买盘缺席而非卖压衰竭，企稳所需的放量阳线从未出现，MACD绿柱-0.876仍在放大、无底背离；</div><div class="sr-val sr-note">3. 真实盈亏比仅约1:1：空头趋势中反弹常态终点是89.6-89.8（约+2.6%），止损在下方2.7%，要拿90.7以上需支撑不破、放量、穿越三重均线三个假设同时成立；</div><div class="sr-val sr-note">4. 2022-2024年销量接近翻倍，股价却从350上方跌至逼近160，龙头名号护不住回撤；多头还把“持有/不建议新增仓位”的评级剪辑成买入依据。</div><div class="sr-row"><span class="sr-label">基本面</span><div class="sr-val"></div></div><div class="sr-val sr-note">1. 2025年三季报净利润同比下滑约30%，盈利实质性恶化；</div><div class="sr-val sr-note">2. 全年销量目标由550万辆下调至460万辆附近，多个单月销量同比转负；</div><div class="sr-val sr-note">3. 欧盟加征约17%反补贴关税压制海外扩张逻辑，95-100中期目标的前提已被证伪，须打折处理。</div><div class="sr-row"><span class="sr-label">技术面</span><div class="sr-val"></div></div><div class="sr-val sr-note">1. 均线全空头排列：MA5=87.68、MA10=89.63、MA20=89.78、MA60=90.68，股价尽数压于其下，89.6-89.8粘合区为第一压力带；</div><div class="sr-val sr-note">2. MACD双线零轴下方且绿柱负值放大，RSI三线空头排列（33.70/39.25/44.56），股价处布林带12.4%分位、贴近下轨86.61；</div><div class="sr-val sr-note">3. 近5日自92.54回落至86.60、振幅约6.8%；下方支撑86.6/85/82，上方压力89.6-89.8/90.68/92.5-92.95。</div><div class="sr-row"><span class="sr-label">关键分歧</span><div class="sr-val"></div></div><div class="sr-val sr-note">1. 支撑有效性：多头以86.6双重支撑为买入依据，空头指其同源堆砌、下方无承接，本质是左侧接刀与右侧确认的方法论对立；</div><div class="sr-val sr-note">2. 盈亏比：多头按95-100中期目标算出3:1以上，空头按趋势内反弹常态终点实测仅约1:1，本质是估值信仰与趋势现实的分歧。</div><div class="sr-row"><span class="sr-label">动作</span><div class="sr-val">即刻分层减持：87.40区域分2-3笔、1-2个交易日内市价减60-70%；尾仓30-40%挂89.5/90.0/90.5三档条件卖单；日线收盘有效跌破86.5无条件清仓（跳空低开破位则开盘即走）；连续10个交易日困于86.5-89.5箱体且无放量阳线，第11个交易日开盘清尾仓。空仓者不买不接飞刀；再入场按证据阶梯：放量≥2亿股站稳90.68建两三成试探仓，MACD零轴下金叉加至50%，月度销量同比转正或毛利率企稳再加至目标仓，离场资金暂转低波动资产。</div></div><div class="sr-val sr-note">—— 注：flash 快速档产出；「三季报-30%」与 BaoStock 官方季报数据矛盾，以 GLM-5.3 深度报告为最终裁决。</div></section><nav id="toc"><a class="sr-chip" href="#sec-0"><span>00</span>总结意见</a><a href="#sec-1"><span>01</span>市场分析师</a>
 <a href="#sec-2"><span>02</span>基本面分析师</a>
 <a href="#sec-3"><span>03</span>研究团队（多空辩论）</a>
 <a href="#sec-4"><span>04</span>交易员</a>
@@ -82,7 +88,7 @@
 <a href="#sec-10"><span>10</span>risky_analyst</a>
 <a href="#sec-11"><span>11</span>safe_analyst</a>
 <a href="#sec-12"><span>12</span>neutral_analyst</a></nav>
-<style>.sr-hero{background:linear-gradient(135deg,#ffffff,#f4f7ff);border:1px solid #dbe4f5;border-radius:14px;padding:20px 22px 14px;margin:2px 0 14px;}.sr-head{display:flex;align-items:center;gap:10px;margin-bottom:10px;}.sr-head h2{margin:0;font-size:17px;}.sr-badge{font-size:13px;font-weight:700;color:#fff;border-radius:8px;padding:3px 12px;}.sr-badge.sr-buy{background:#d7263d;}.sr-badge.sr-sell{background:#0e9f6e;}.sr-badge.sr-flat{background:#8a93a6;}.sr-row{display:flex;gap:12px;padding:7px 0;border-top:1px dashed #e6eaf2;}.sr-row:first-of-type{border-top:none;}.sr-label{flex:none;width:64px;color:#5b8def;font-weight:600;font-size:13.5px;padding-top:1px;}.sr-val{flex:1;font-size:14.5px;line-height:1.75;white-space:pre-wrap;}.sr-note{color:#8a93a6;font-size:12.5px;}</style><section class="sr-hero" id="sec-0"><div class="sr-head"><span class="sr-badge sr-sell">看空</span><h2>📋 总结意见</h2></div><div class="sr-row"><span class="sr-label">结论</span><div class="sr-val">看空（卖出，净敞口归零）。基本面恶化（三季报净利同比约-30%）叠加均线全空头排列，概率加权后1个月目标约86.5、6个月约83，各期限期望收益为零至负，而下行尾部风险达两位数（约-14%）。置信度：高——激进、安全、中性三方罕见合流于离场，无一方主张买入或持有。</div></div><div class="sr-row"><span class="sr-label">多方论点</span><div class="sr-val"></div></div><div class="sr-val sr-note">1. 86.60-86.61双重支撑（布林带下轨与5日最低价重合）未破，股价获初步承接；</div><div class="sr-val sr-note">2. RSI6=33.70接近超卖，抛压阶段性释放，存在技术性反弹需求；</div><div class="sr-val sr-note">3. 回调全程无恐慌性放量杀跌，日均1.68亿股属常态量，主力未出逃，下跌属获利回吐；</div><div class="sr-val sr-note">4. 基本面报告给出合理区间86.6-93.0、中期目标95-100，可于86.6-87.5分批布局、85止损，宣称盈亏比3:1以上。</div><div class="sr-row"><span class="sr-label">空方论点</span><div class="sr-val"></div></div><div class="sr-val sr-note">1. 支撑未被真正考验且与5日低点同源，是“同一数字写两遍”；止损线86.50就在脚下约1%，破位即触发止损盘连锁踩踏；</div><div class="sr-val sr-note">2. 缩量是买盘缺席而非卖压衰竭，企稳所需的放量阳线从未出现，MACD绿柱-0.876仍在放大、无底背离；</div><div class="sr-val sr-note">3. 真实盈亏比仅约1:1：空头趋势中反弹常态终点是89.6-89.8（约+2.6%），止损在下方2.7%，要拿90.7以上需支撑不破、放量、穿越三重均线三个假设同时成立；</div><div class="sr-val sr-note">4. 2022-2024年销量接近翻倍，股价却从350上方跌至逼近160，龙头名号护不住回撤；多头还把“持有/不建议新增仓位”的评级剪辑成买入依据。</div><div class="sr-row"><span class="sr-label">基本面</span><div class="sr-val"></div></div><div class="sr-val sr-note">1. 2025年三季报净利润同比下滑约30%，盈利实质性恶化；</div><div class="sr-val sr-note">2. 全年销量目标由550万辆下调至460万辆附近，多个单月销量同比转负；</div><div class="sr-val sr-note">3. 欧盟加征约17%反补贴关税压制海外扩张逻辑，95-100中期目标的前提已被证伪，须打折处理。</div><div class="sr-row"><span class="sr-label">技术面</span><div class="sr-val"></div></div><div class="sr-val sr-note">1. 均线全空头排列：MA5=87.68、MA10=89.63、MA20=89.78、MA60=90.68，股价尽数压于其下，89.6-89.8粘合区为第一压力带；</div><div class="sr-val sr-note">2. MACD双线零轴下方且绿柱负值放大，RSI三线空头排列（33.70/39.25/44.56），股价处布林带12.4%分位、贴近下轨86.61；</div><div class="sr-val sr-note">3. 近5日自92.54回落至86.60、振幅约6.8%；下方支撑86.6/85/82，上方压力89.6-89.8/90.68/92.5-92.95。</div><div class="sr-row"><span class="sr-label">关键分歧</span><div class="sr-val"></div></div><div class="sr-val sr-note">1. 支撑有效性：多头以86.6双重支撑为买入依据，空头指其同源堆砌、下方无承接，本质是左侧接刀与右侧确认的方法论对立；</div><div class="sr-val sr-note">2. 盈亏比：多头按95-100中期目标算出3:1以上，空头按趋势内反弹常态终点实测仅约1:1，本质是估值信仰与趋势现实的分歧。</div><div class="sr-row"><span class="sr-label">动作</span><div class="sr-val">即刻分层减持：87.40区域分2-3笔、1-2个交易日内市价减60-70%；尾仓30-40%挂89.5/90.0/90.5三档条件卖单；日线收盘有效跌破86.5无条件清仓（跳空低开破位则开盘即走）；连续10个交易日困于86.5-89.5箱体且无放量阳线，第11个交易日开盘清尾仓。空仓者不买不接飞刀；再入场按证据阶梯：放量≥2亿股站稳90.68建两三成试探仓，MACD零轴下金叉加至50%，月度销量同比转正或毛利率企稳再加至目标仓，离场资金暂转低波动资产。</div></div><div class="sr-val sr-note">—— 注：flash 快速档产出；「三季报-30%」与 BaoStock 官方季报数据矛盾，以今晨 09:00 GLM-5.3 深度报告为最终裁决。</div></section><section class="card" id="sec-1"><div class="card-head"><span class="num">01</span><h2>市场分析师</h2></div><div class="md"><h1><strong>比亚迪（002594）技术分析报告</strong></h1>
+<section class="card" id="sec-1"><div class="card-head"><span class="num">01</span><h2>市场分析师</h2></div><div class="md"><h1><strong>比亚迪（002594）技术分析报告</strong></h1>
 <p><strong>分析日期：2026-09-05</strong></p>
 <h2>一、股票基本信息</h2>
 <ul>
